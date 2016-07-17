@@ -3,10 +3,10 @@
         "parser" : "monhyip"
     },
     "money-news-online" : {
-        "parser" : "moneyNewsOnline"
+        "parser" : "moneyNewsOnline",
+        "state" : "disabled"
     },
     "goldpoll" : {
         "parser" : "goldpoll"
     }
-
 }

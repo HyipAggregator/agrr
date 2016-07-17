@@ -13,5 +13,5 @@ To run app use this
 
 ```sh
 cd aggr/src
-node parser.js
+node index.js
 ```

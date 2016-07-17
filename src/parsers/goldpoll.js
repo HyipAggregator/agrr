@@ -1,5 +1,5 @@
 module.exports = {
-    parse : function (body) {
-        console.log('goldpoll ::: ' +body);
+    parse : function (params) {
+        console.log('GOLDPOLL ::: ' + params);
     }
 }

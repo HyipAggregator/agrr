@@ -1,5 +1,5 @@
 module.exports = {
-    parse : function (body) {
+    parse : function (params) {
      /*   request('http://monhyip.net/', function(error, response, body){
                 console.log('the decoded data is: ' + body)
             }
@@ -11,6 +11,6 @@ module.exports = {
 
         console.log($('.a').html());
         */
-        console.log('MONHYIP ::: ' +body);
+        console.log('MONHYIP ::: ' + params);
     }
 }
