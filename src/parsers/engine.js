@@ -1,4 +1,8 @@
 module.exports = {
+
+    /**
+     * Start parsing, initialize all enabled parsers
+     */
     startParsing : function () {
         var cfg = this._createParsers();
 
@@ -9,6 +13,12 @@ module.exports = {
         });
     },
 
+    /**
+     * Parse config file and initialize parsers
+     * @param configFile
+     * @returns {Promise}
+     * @private
+     */
     _createParsers : function (configFile) {
         configFile = configFile || __dirname + '/config.json';
         var fs = require('fs'),
@@ -22,8 +32,8 @@ module.exports = {
                 config = JSON.parse(data);
 
                 var parsers = _.values(config);
-                _.each(parsers, function(value){
-                    result[result.length] = require('./' + value.parser);
+                _.each(parsers, function(configValue){
+                    result.push(require('./' + configValue.parser));
                 });
                 resolve(result);
             });
