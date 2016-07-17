@@ -1,0 +1,10 @@
+{
+  "name": "AgrrParser",
+  "version": "0.0.1",
+  "dependencies": {
+    "cheerio": "^0.20.0",
+    "lodash": "^4.13.1",
+    "promise": "^7.1.1",
+    "request": "^2.73.0"
+  }
+}

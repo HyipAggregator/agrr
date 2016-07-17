@@ -1,0 +1,8 @@
+{
+    "monhyip" : {
+        "parser" : "monhyip"
+    },
+    "money-news-online" : {
+        "parser" : "moneyNewsOnline"
+    }
+}
