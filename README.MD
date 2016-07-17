@@ -1,5 +1,17 @@
 Just another hyip parser...
 ----------------------------
 
-```To instal just rungit clone <thisrepo>```
-```npm install```
+Just to instal run in terminal
+
+```sh
+git clone [git-repo-url] aggr
+cd aggr
+npm install
+```
+
+To run app use this
+
+```sh
+cd aggr/src
+node parser.js
+```
