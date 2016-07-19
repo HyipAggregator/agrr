@@ -1,9 +1,39 @@
 var _ = require('lodash');
-var obj = JSON.parse('{"test":{"test1" : 2}, "hui":{ "test33" :1, "test":2}}');
 
-var vals = _.values(obj);
-console.log(vals);
-_.each(vals, function (value) {
-    console.log("EACH:" + value.test33);
-})
-//console.log(obj.test);
+// === OBJECTS ===
+//---forIn---
+var obj = {
+    "attr1" : "val1",
+    "attr2" : "val2",
+    "attr3" : "val3"
+};
+_.forIn(obj, function (key, value) {
+    console.log("Key : " + key + " , Value : " + value);
+});
+
+//---has---
+console.log(true === _.has(obj, "attr1"));
+
+//--max,min,sum--
+console.log(_.max([4, 2, 8, 6]));
+console.log(_.min([4, 2, 8, 6]));
+console.log(_.sum([4, 2, 8, 6]));
+
+//---cast array---
+console.log(_.castArray(1));
+// → [1]
+
+console.log(_.castArray({ 'a': 1 }));
+// → [{ 'a': 1 }]
+
+console.log(_.castArray('abc'));
+// → ['abc']
+
+console.log(_.castArray(null));
+// → [null]
+
+console.log(_.castArray(undefined));
+// → [undefined]
+
+console.log(_.castArray());
+// → []
