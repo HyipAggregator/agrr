@@ -1,4 +1,5 @@
-var _ = require('lodash');
+var _ = require('lodash'),
+    util = require('util');
 
 // === OBJECTS ===
 //---forIn---
@@ -37,3 +38,5 @@ console.log(_.castArray(undefined));
 
 console.log(_.castArray());
 // → []
+
+var str = util.format('first %s, secons %d third %s', 'foo', 1, 'baz');
