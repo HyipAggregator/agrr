@@ -1,3 +1,5 @@
+var repository = require('./../domain/repository');
+
 module.exports = {
 
     /**
@@ -7,9 +9,16 @@ module.exports = {
         var cfg = this._createParsers();
 
         cfg.done(function (parsers) {
-            _.each(parsers, function (parser) {
-                parser.parse(Math.random());
-            })
+            repository.startSession(function (client) {
+                _.each(parsers, function (parser) {
+                    parser.parse({
+                        startAt : new Date(),
+                        save : function (hyip) {
+                            return repository.save(client, hyip);
+                        }
+                    });
+                });
+            });
         });
     },
 

@@ -11,7 +11,7 @@ module.exports = {
 
                     blocks.each(function(index, block){
 
-                        var hyipResult = {};
+                        var hyipResult = { monitor_id : 'monhyip' };
 
                             hyipResult.id = index;
 
@@ -28,7 +28,7 @@ module.exports = {
                                                     request('http://monhyip.net'+link.attr('href'), function (error, response){
                                                         if (!error && response.statusCode == 200) {
                                                             hyipResult.URL = response.client._host;
-                                                            console.log(hyipResult);
+                                                            params.save(hyipResult);
                                                         }
                                                     });
                                         }
