@@ -9,12 +9,12 @@ module.exports = {
         var cfg = this._createParsers();
 
         cfg.done(function (parsers) {
-            repository.startSession(function (client) {
+            repository.startSession(function (session) {
                 _.each(parsers, function (parser) {
                     parser.parse({
                         startAt : new Date(),
                         save : function (hyip) {
-                            return repository.save(client, hyip);
+                            return session.save(hyip);
                         }
                     });
                 });
