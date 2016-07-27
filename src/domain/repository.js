@@ -50,23 +50,5 @@ module.exports = {
             process(new Session(client));
             done();
         });
-    },
-
-    _query : function (callback, retry) {
-
-        var pool = new pg.Pool(config),
-            $this = this;
-
-        retry = retry || 0;
-        pool.connect(function(err, client, done) {
-            if (err) {
-                setTimeout(function () {
-                    $this._query(callback, retry + 1)
-                }, 3000);
-
-                if (retry >= 20) throw err;
-            }
-            callback(client, done);
-        });
     }
 }
