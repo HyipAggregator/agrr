@@ -11,31 +11,27 @@ var config = {
     idleTimeoutMillis: 30000,
 };
 pg.defaults.ssl = true;
-module.exports = {
-    startSession : function (process) {
-        var pool = new pg.Pool(config);
-        pool.connect(function(err, client, done) {
-            process(client);
-            done();
-        });
-    },
 
-    deleteAll : function (client) {
-        client.query("DELETE FROM hyips");
-    },
-
-    save : function (client, hyip) {
+var Session = function(client) {
+    this.client = client;
+}
+Session.prototype = {
+    save : function (hyip) {
         if (!hyip) return false;
         if (!hyip.monitor_id) return false;
 
         var id = md5(Math.random() + new Date().getTime());
-        client.query("INSERT INTO hyips(id, monitor_id, name, url, plans, banner_code) values($1, $2, $3, $4, $5, $6)", [id, hyip.monitor_id, hyip.name, hyip.url, hyip.plans, hyip.banner_code]);
+        this.client.query("INSERT INTO hyips(id, monitor_id, name, url, plans, banner_code) values($1, $2, $3, $4, $5, $6)", [id, hyip.monitor_id, hyip.name, hyip.url, hyip.plans, hyip.banner_code]);
 
         return true;
     },
 
-    all : function (client, _return) {
-        var query = client.query("SELECT * FROM hyips;"),
+    deleteAll : function () {
+        this.client.query("DELETE FROM hyips");
+    },
+
+    all : function (_return) {
+        var query = this.client.query("SELECT * FROM hyips;"),
             result = [];
 
         query.on('row', function(row) {
@@ -44,6 +40,15 @@ module.exports = {
 
         query.on('end', function() {
             _return(result);
+        });
+    },
+}
+module.exports = {
+    startSession : function (process) {
+        var pool = new pg.Pool(config);
+        pool.connect(function(err, client, done) {
+            process(new Session(client));
+            done();
         });
     },
 
