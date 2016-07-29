@@ -5,6 +5,9 @@
     "money-news-online" : {
         "parser" : "moneyNewsOnline"
     },
+    "invest-tracing" : {
+        "parser" : "investTracing"
+    },
     "goldpoll" : {
         "parser" : "goldpoll"
     }
