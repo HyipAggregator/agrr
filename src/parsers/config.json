@@ -5,6 +5,12 @@
     "money-news-online" : {
         "parser" : "moneyNewsOnline"
     },
+    "invest-tracing" : {
+        "parser" : "investTracing"
+    },
+    "hyipexplorer" : {
+        "parser" : "hyipexplorer"
+    },
     "goldpoll" : {
         "parser" : "goldpoll"
     }

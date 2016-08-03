@@ -29,11 +29,20 @@ module.exports = {
                                             if (!error && response.statusCode == 200) {
                                                 hyipResult.URL = response.client._host;
                                                 params.save(hyipResult);
+                                            }else{
+                                                /*console.log('ERROR from last response '+error);
+                                                 console.log(hyipResult.id);
+                                                hyipResult.URL = 'error';*/
                                             }
                                         });
+                                }else{
+                                    /*console.log('ERROR from second response '+error);
+                                     console.log(hyipResult.id);*/
                                 }
                             });
                 });
+            }else{
+                /*console.log('ERROR from first response '+error)*/
             }
             }
         );
